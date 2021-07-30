@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/regbg"
+    tools:context=".Activities.IntroActivity">
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"/>
+    <LinearLayout
+        android:layout_below="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="100dp">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/black"
+                    android:text="Register"
+                    app:cornerRadius="12dp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/product_sans"
+            android:text="@string/already_hv_acc"
+            android:textColor="@color/txt_color"
+            android:textSize="16sp"
+            android:padding="3dp"/>
+
+        <TextView
+            android:id="@+id/tv_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/product_sans"
+            android:text="@string/sign_in"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:padding="3dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+</layout>

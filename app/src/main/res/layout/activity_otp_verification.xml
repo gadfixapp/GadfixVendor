@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.OtpVerificationActivity"
+    android:background="@color/black">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/purple_500"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verification ?"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_below="@+id/image"
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/vie_bg">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/l_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:padding="5dp"
+                        android:layout_marginTop="20dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/product_sans"
+                            android:text="Enter your vlid OTP"
+                            android:textSize="20dp"/>
+                    </LinearLayout>
+
+                    <com.goodiebag.pinview.Pinview
+                        android:id="@+id/pinview"
+                        android:layout_below="@+id/l_tv"
+                        app:pinBackground="@drawable/example_drawable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:pinWidth="45dp"
+                        app:pinHeight="45dp"
+                        app:pinLength="4"
+                        app:cursorVisible="false"
+                        app:forceKeyboard="false"
+                        app:hint="0"
+                        app:inputType="number"
+                        app:password="false"
+                        android:layout_marginTop="10dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/l_tv1"
+                        android:layout_below="@+id/pinview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:padding="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18dp"
+                            android:text="Resend OTP"
+                            android:fontFamily="@font/product_sans"
+                            android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/login"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/l_tv1"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="30dp">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/bt_verify"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            app:cornerRadius="12dp"
+                            android:backgroundTint="@color/orange"
+                            android:textColor="@color/white"
+                            android:text="@string/verify"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="160dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"/>
+
+
+
+</RelativeLayout>
+</layout>
