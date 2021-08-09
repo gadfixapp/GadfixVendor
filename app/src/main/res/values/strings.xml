@@ -2,7 +2,7 @@
     <string name="app_name">GadfixVendor</string>
 
     //projects text
-    <string name="welcome">Welcome to GadFix.\n Now sell your services to millions of customer</string>
+    <string name="welcome">Welcome to GadFix.\nNow sell your services to millions of customer</string>
     <string name="register">Register Now</string>
     <string name="already_hv_acc">I already have an account?</string>
     <string name="sign_in">Sign In</string>
