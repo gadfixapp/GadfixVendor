@@ -3,6 +3,13 @@
     package="com.app.gadfixvendor">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +18,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GadfixVendor">
-        <activity android:name=".Activities.ForgotPasswordActivity"></activity>
+        <activity android:name=".Activities.NotificationActivity"></activity>
+        <activity android:name=".Activities.ProfileActivity" />
+        <activity android:name=".Activities.TicketActivity" />
+        <activity android:name=".Activities.UploadActivity" />
+        <activity android:name=".Activities.PaymentActivity" />
+        <activity android:name=".Activities.HomeActivity" />
+        <activity
+            android:name=".Dashboard.UserDashboardActivity"
+            android:label="@string/title_activity_user_dashboard"
+            android:theme="@style/Theme.GadfixVendor.NoActionBar" />
+        <activity android:name=".Activities.ForgotPasswordActivity" />
         <activity android:name=".Activities.UserDetailsActivity" />
         <activity android:name=".Activities.OtpVerificationActivity" />
         <activity android:name=".Activities.RegistrationActivity" />
@@ -25,6 +42,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <service android:name=".FeatchCurrentLocationAddress" />
     </application>
 
 </manifest>
