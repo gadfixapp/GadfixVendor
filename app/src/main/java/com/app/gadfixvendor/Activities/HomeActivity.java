@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -40,6 +41,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
+    private View view;
     private String getData,lat,log;
     private ResultReceiver resultReceiver;
     MenuItem menuItem;
@@ -53,10 +55,13 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        view = binding.getRoot();
 
         binding.contentDashBoard.tvSymbol.setText(this.getResources().getString(R.string.Rs));
 
+
         resultReceiver = new AddressResultReceiver(new Handler());
+        //Google access location
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(HomeActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
@@ -65,8 +70,45 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
             getCurrentLocation();
         }
         getBanner();
+        textViewCounting();
 
     }
+    //textView with counting
+    private void textViewCounting(){
+        int oldValue = Integer.parseInt(binding.contentDashBoard.tvEarning.getText().toString());
+        ValueAnimator animator = ValueAnimator.ofInt(oldValue, oldValue + 200);
+        animator.setDuration(2000);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                binding.contentDashBoard.tvEarning.setText(animation.getAnimatedValue().toString());
+            }
+        });
+        animator.start();
+
+        int oldCompleteTask = Integer.parseInt(binding.contentDashBoard.tvCompleteTask.getText().toString());
+        ValueAnimator animator1 = ValueAnimator.ofInt(oldCompleteTask, oldCompleteTask + 100);
+        animator1.setDuration(2000);
+        animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                binding.contentDashBoard.tvCompleteTask.setText(animator1.getAnimatedValue().toString());
+            }
+        });
+        animator1.start();
+
+        int oldPendingValue = Integer.parseInt(binding.contentDashBoard.tvPendingTask.getText().toString());
+        ValueAnimator animator2 = ValueAnimator.ofInt(oldPendingValue, oldPendingValue + 50);
+        animator2.setDuration(2000);
+        animator2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                binding.contentDashBoard.tvPendingTask.setText(animator2.getAnimatedValue().toString());
+            }
+        });
+        animator2.start();
+    }
+    //banner
     private void getBanner() {
 
         for(int i=0;i<IMAGES.length;i++){
@@ -263,11 +305,13 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
         return true;
     }
 
+    //content view
     @Override
     protected int getContentViewId() {
         return R.layout.activity_home;
     }
 
+    // bottom navigation view
     @Override
     protected int getNavigationMenuItemId() {
         return R.id.navigation_home;

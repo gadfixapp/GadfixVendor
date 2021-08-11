@@ -80,4 +80,10 @@ dependencies {
     //Glid Dependency
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
+    // neumorphism design dependency
+    implementation 'com.github.fornewid:neumorphism:0.3.0'
+
+
+
 }
+
