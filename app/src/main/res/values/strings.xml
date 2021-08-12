@@ -34,5 +34,71 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="layout_payment">My RecyclerView</string>
+    <string-array name="shop_name">
+        <item>shop1</item>
+        <item>shop2</item>
+        <item>shop3</item>
+        <item>shop4</item>
+        <item>shop5</item>
+        <item>shop6</item>
+        <item>shop7</item>
+        <item>shop8</item>
+        <item>shop9</item>
+        <item>shop10</item>
+    </string-array>
+
+    <string-array name="address">
+        <item>shopNo1</item>
+        <item>shopNo2</item>
+        <item>shopNo3</item>
+        <item>shopNo4</item>
+        <item>shopNo5</item>
+        <item>shopNo6</item>
+        <item>shopNo7</item>
+        <item>shopNo8</item>
+        <item>shopNo9</item>
+        <item>shopNo10</item>
+    </string-array>
+
+    <string-array name="contact">
+        <item>ph1</item>
+        <item>ph2</item>
+        <item>ph3</item>
+        <item>ph4</item>
+        <item>ph5</item>
+        <item>ph6</item>
+        <item>ph7</item>
+        <item>ph8</item>
+        <item>ph9</item>
+        <item>ph10</item>
+    </string-array>
+
+    <string name="layout_notification">My RecyclerView </string>
+    <string-array name="notification_title">
+        <item>title1</item>
+        <item>title2</item>
+        <item>title3</item>
+        <item>title4</item>
+        <item>title5</item>
+        <item>title6</item>
+        <item>title7</item>
+        <item>title8</item>
+        <item>title9</item>
+        <item>title10</item>
+    </string-array>
+
+    <string-array name="notification_content">
+        <item>content1</item>
+        <item>content2</item>
+        <item>content3</item>
+        <item>content4</item>
+        <item>content5</item>
+        <item>content6</item>
+        <item>content7</item>
+        <item>content8</item>
+        <item>content9</item>
+        <item>content10</item>
+    </string-array>
 
 </resources>

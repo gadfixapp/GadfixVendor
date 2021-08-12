@@ -4,16 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
+   <LinearLayout
+       android:id="@+id/layout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:padding="10dp">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Notification"
+           android:textColor="@color/white"
+           android:textSize="30dp"
+           android:textStyle="bold"/>
+   </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notification Page"
-        android:textColor="@color/white"
-        android:textSize="50dp"
-        android:textStyle="italic|bold"
-        android:layout_centerInParent="true"/>
-
-
+    <LinearLayout
+        android:layout_below="@+id/layout"
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewNoti"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="144dp">
+
+            <TextView
+                android:id="@+id/noti_title"
+                android:layout_width="398dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:autoSizeTextType="uniform"
+                android:paddingLeft="10dp"
+                android:text="Notification title"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.13" />
+
+            <TextView
+                android:id="@+id/noti_content"
+                android:layout_width="402dp"
+                android:layout_height="79dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="12dp"
+                android:autoSizeTextType="uniform"
+                android:paddingLeft="10dp"
+                android:text="Notification content"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/noti_title"
+                app:layout_constraintStart_toStartOf="@+id/noti_title"
+                app:layout_constraintTop_toBottomOf="@+id/noti_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
