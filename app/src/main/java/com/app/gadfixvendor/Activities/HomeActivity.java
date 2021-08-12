@@ -49,7 +49,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
     int pandingNotification = 3;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
-    private static final Integer[] IMAGES= {R.drawable.gradient_bg,R.drawable.gradient_bg,R.drawable.gradient_bg,R.drawable.gradient_bg,R.drawable.gradient_bg};
+    private static final Integer[] IMAGES= {R.drawable.mobilefix_image,R.drawable.mobilefix_image1,R.drawable.mobilefix_image2,R.drawable.mobilefix_image3,R.drawable.regbg};
     private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
 
     @Override
@@ -153,7 +153,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
             public void run() {
                 handler.post(Update);
             }
-        }, 3000, 3000);
+        }, 500, 3000);
 
         // Pager listener over indicator
         indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

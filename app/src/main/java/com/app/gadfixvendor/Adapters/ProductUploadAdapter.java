@@ -1,6 +1,7 @@
 package com.app.gadfixvendor.Adapters;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class ProductUploadAdapter extends RecyclerView.Adapter<ProductUploadAdap
 
     @Override
     public void onBindViewHolder(@NonNull ProductUploadAdapter.uploadViewHolder holder, int position) {
-
+        holder.binding.tvMrp.setPaintFlags(holder.binding.tvMrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
     @Override

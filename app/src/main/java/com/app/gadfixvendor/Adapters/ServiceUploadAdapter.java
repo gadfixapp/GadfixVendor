@@ -1,5 +1,6 @@
 package com.app.gadfixvendor.Adapters;
 
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class ServiceUploadAdapter extends RecyclerView.Adapter<ServiceUploadAdap
 
     @Override
     public void onBindViewHolder(@NonNull uploadViewHolder holder, int position) {
-
+        holder.binding.tvMrp.setPaintFlags(holder.binding.tvMrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
     @Override

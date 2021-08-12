@@ -10,6 +10,8 @@
 
     <color name="txt_color">#C6C6C6</color>
     <color name="black1">#68000000</color>
+    <color name="black2">#3d3d3d</color>
+    <color name="green">#388e3c</color>
     <color name="nav_color">#333333</color>
     <color name="green_dark">#46FF6F</color>
     <color name="bt_bg">#0500FF</color>

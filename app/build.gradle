@@ -83,6 +83,12 @@ dependencies {
     // neumorphism design dependency
     implementation 'com.github.fornewid:neumorphism:0.3.0'
 
+    implementation 'net.alhazmy13.MediaPicker:libary:2.4.4'
+    implementation 'com.nabinbhandari.android:permissions:3.8'
+
+
+    implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
+
 
 
 }
