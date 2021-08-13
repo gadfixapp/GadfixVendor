@@ -10,77 +10,80 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/cardview_dark_background"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="224dp">
+            android:layout_height="199dp"
+            android:background="@drawable/vie_bg">
 
-            <TextView
+            <EditText
                 android:id="@+id/shop_name"
-                android:layout_width="238dp"
+                android:layout_width="235dp"
                 android:layout_height="43dp"
                 android:autoSizeTextType="uniform"
-                android:background="#eae9e9"
+                android:background="@drawable/edittext_edge"
+                android:editable="false"
                 android:fontFamily="@font/bungee"
                 android:paddingLeft="10dp"
                 android:text="SHOP NAME"
                 android:textColor="@color/black"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.933"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.088" />
+                app:layout_constraintVertical_bias="0.065" />
 
             <ImageView
                 android:id="@+id/img"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:background="#eae9e9"
+                android:background="@drawable/white_radius"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.019"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.183"
+                app:layout_constraintVertical_bias="0.060"
                 app:srcCompat="@drawable/profile" />
 
-            <TextView
+            <EditText
                 android:id="@+id/shopaddress"
                 android:layout_width="235dp"
                 android:layout_height="71dp"
                 android:autoSizeTextType="uniform"
-                android:background="#eae9e9"
+                android:background="@drawable/edittext_edge"
+                android:editable="false"
                 android:paddingLeft="10dp"
                 android:text="Shop Address"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.915"
+                app:layout_constraintHorizontal_bias="0.933"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.47" />
+                app:layout_constraintVertical_bias="0.450" />
 
-            <TextView
+            <EditText
                 android:id="@+id/shopcontact"
-                android:layout_width="176dp"
-                android:layout_height="39dp"
+                android:layout_width="168dp"
+                android:layout_height="40dp"
                 android:autoSizeTextType="uniform"
-                android:background="#eae9e9"
+                android:background="@drawable/edittext_edge"
+                android:editable="false"
                 android:paddingLeft="10dp"
                 android:text="Shop Ph No"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.023"
+                app:layout_constraintHorizontal_bias="0.024"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.849" />
+                app:layout_constraintVertical_bias="0.88" />
 
             <Button
                 android:id="@+id/button"
@@ -90,10 +93,10 @@
                 android:text="connect"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.945"
+                app:layout_constraintHorizontal_bias="0.950"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.846" />
+                app:layout_constraintVertical_bias="0.900" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
