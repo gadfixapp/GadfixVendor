@@ -7,30 +7,24 @@
     android:background="@color/black"
     android:orientation="vertical">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/cardview_dark_background"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        app:cardUseCompatPadding="true">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="199dp"
-            android:background="@drawable/vie_bg">
+            android:layout_height="wrap_content"
+            android:background="@color/black">
 
             <EditText
                 android:id="@+id/shop_name"
                 android:layout_width="235dp"
                 android:layout_height="43dp"
                 android:autoSizeTextType="uniform"
-                android:background="@drawable/edittext_edge"
+                android:background="@color/black"
                 android:editable="false"
                 android:fontFamily="@font/bungee"
                 android:paddingLeft="10dp"
                 android:text="SHOP NAME"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.933"
@@ -49,18 +43,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.060"
-                app:srcCompat="@drawable/profile" />
+                app:srcCompat="@drawable/profile_icon_" />
 
             <EditText
                 android:id="@+id/shopaddress"
                 android:layout_width="235dp"
                 android:layout_height="71dp"
                 android:autoSizeTextType="uniform"
-                android:background="@drawable/edittext_edge"
+                android:background="@color/black"
                 android:editable="false"
                 android:paddingLeft="10dp"
                 android:text="Shop Address"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.933"
@@ -73,17 +67,17 @@
                 android:layout_width="168dp"
                 android:layout_height="40dp"
                 android:autoSizeTextType="uniform"
-                android:background="@drawable/edittext_edge"
+                android:background="@color/black"
                 android:editable="false"
                 android:paddingLeft="10dp"
                 android:text="Shop Ph No"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.024"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.88" />
+                app:layout_constraintVertical_bias="0.855" />
 
             <Button
                 android:id="@+id/button"
@@ -98,7 +92,22 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.900" />
 
+            <View
+                android:id="@+id/divider"
+                android:layout_width="395dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shopcontact"
+                app:layout_constraintVertical_bias="0.035" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
