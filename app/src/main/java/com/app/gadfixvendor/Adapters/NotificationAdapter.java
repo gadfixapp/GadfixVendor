@@ -7,54 +7,52 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.gadfixvendor.R;
+import com.app.gadfixvendor.databinding.NotificationViewBinding;
 
 import org.jetbrains.annotations.NotNull;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.MyViewHolder> {
+    private Context context;
+    private LayoutInflater layoutInflater;
 
-    String s1[],s2[];
-    Context cnt;
 
-    public NotificationAdapter(Context cont,String str1[],String str2[]){
+    public NotificationAdapter(Context context){
+        this.context = context;
 
-        cnt=cont;
-        s1=str1;
-        s2=str2;
     }
 
-
-
     @Override
-    public MyViewHolder onCreateViewHolder( @NotNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflaternoti=LayoutInflater.from(cnt);
-        View view=layoutInflaternoti.inflate(R.layout.notification_view,parent,false);
-        return new MyViewHolder(view);
+    public NotificationAdapter.MyViewHolder onCreateViewHolder( @NotNull ViewGroup parent, int viewType) {
+        NotificationViewBinding binding;
+        if (layoutInflater == null){
+            layoutInflater = LayoutInflater.from(parent.getContext());
+        }
+        binding = DataBindingUtil.inflate(layoutInflater,R.layout.notification_view,parent,false);
+        return new NotificationAdapter.MyViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NotNull MyViewHolder holder, int position) {
 
-        holder.nttitle.setText(s1[position]);
-        holder.ntcontent.setText(s2[position]);
+
     }
 
     @Override
     public int getItemCount() {
-        return s1.length;
+        return 10;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        NotificationViewBinding binding;
 
-        TextView nttitle,ntcontent;
+        public MyViewHolder(@NotNull NotificationViewBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
 
-        public MyViewHolder(@NotNull View itemView) {
-            super(itemView);
-
-            nttitle=itemView.findViewById(R.id.noti_title);
-            ntcontent=itemView.findViewById(R.id.noti_content);
         }
     }
 }

@@ -2,21 +2,21 @@ package com.app.gadfixvendor.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.app.gadfixvendor.R;
 import com.app.gadfixvendor.databinding.ActivityRegistrationBinding;
 
-public class RegistrationActivity extends AppCompatActivity {
-    private ActivityRegistrationBinding binding;
+public class RegistrationActivity extends AppCompatActivity{
     float v=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_registration);
+        ActivityRegistrationBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_registration);
+
         binding.card.setTranslationX(800);
         binding.card1.setTranslationX(800);
         binding.card2.setTranslationX(800);
@@ -54,4 +54,6 @@ public class RegistrationActivity extends AppCompatActivity {
         });
 
     }
+
+
 }

@@ -1,6 +1,7 @@
 package com.app.gadfixvendor.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,21 +13,19 @@ import com.app.gadfixvendor.R;
 import com.app.gadfixvendor.databinding.ActivityNotificationBinding;
 
 public class NotificationActivity extends BaseActivity<ActivityNotificationBinding> {
-
-    RecyclerView recyclerView;
-    String noti_title[],noti_content[];
+    private DividerItemDecoration itemDecoration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding.contentDashBoard.notificationRecyclerView.setHasFixedSize(true);
+        binding.contentDashBoard.notificationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        itemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
+        itemDecoration.setDrawable(getDrawable(R.drawable.divider_bg));
+        binding.contentDashBoard.notificationRecyclerView.addItemDecoration(itemDecoration);
+        binding.contentDashBoard.notificationRecyclerView.setAdapter(new NotificationAdapter(this));
 
-        recyclerView=findViewById(R.id.recyclerViewNoti);
-        noti_title=getResources().getStringArray(R.array.notification_title);
-        noti_content=getResources().getStringArray(R.array.notification_content);
 
-        NotificationAdapter Nadpt=new NotificationAdapter(this,noti_title,noti_content);
-        recyclerView.setAdapter(Nadpt);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     //content view

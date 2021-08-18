@@ -152,7 +152,8 @@
                             app:cardUseCompatPadding="true"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:layout_alignParentLeft="true">
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/click_card">
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -182,6 +183,38 @@
                                         android:fontFamily="@font/product_sans"
                                         android:text="Upload your pic"/>
                                 </LinearLayout>
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_card"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_gravity="center_vertical"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentLeft="true"
+                            android:visibility="gone">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="5dp">
+                                    <ImageView
+                                        android:id="@+id/user_pic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_upload"/>
+                                </LinearLayout>
+
                             </RelativeLayout>
 
                         </com.google.android.material.card.MaterialCardView>
