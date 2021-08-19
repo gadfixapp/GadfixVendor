@@ -4,32 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.app.gadfixvendor.Adapters.PaymentAdapter;
 import com.app.gadfixvendor.R;
 import com.app.gadfixvendor.databinding.ActivityPaymentBinding;
 
-public class PaymentActivity extends BaseActivity<ActivityPaymentBinding> {
 
-    RecyclerView recyclerView;
-    String Sname[],Saddress[],Scontact[];
-    int images[]={R.drawable.profile,R.drawable.profile,R.drawable.profile,R.drawable.profile,
-            R.drawable.profile,R.drawable.profile,R.drawable.profile,R.drawable.profile,
-            R.drawable.profile,R.drawable.profile,};
+public class PaymentActivity extends BaseActivity<ActivityPaymentBinding> implements PaymentAdapter.Onclick{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        recyclerView = findViewById(R.id.recyclerView);
-        Sname = getResources().getStringArray(R.array.shop_name);
-        Saddress = getResources().getStringArray(R.array.address);
-        Scontact = getResources().getStringArray(R.array.contact);
-
-        PaymentAdapter Padpt=new PaymentAdapter(this,Sname,Saddress,Scontact,images);
-        recyclerView.setAdapter(Padpt);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.contentDashBoard.recyclerView.setHasFixedSize(true);
+        binding.contentDashBoard.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.contentDashBoard.recyclerView.setAdapter(new PaymentAdapter(this,PaymentActivity.this));
     }
 
     @Override
@@ -40,5 +31,10 @@ public class PaymentActivity extends BaseActivity<ActivityPaymentBinding> {
     @Override
     protected int getNavigationMenuItemId() {
         return R.id.navigation_payment;
+    }
+
+    @Override
+    public void getPosition(int position) {
+        Log.d("card_position", "getPosition: "+position);
     }
 }

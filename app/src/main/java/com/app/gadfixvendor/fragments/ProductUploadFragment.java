@@ -85,11 +85,11 @@ public class ProductUploadFragment extends Fragment {
             });
             clickCard = sheetView.findViewById(R.id.click_card);
             clickCard.setOnClickListener(v1 -> {
-//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                if (intent.resolveActivity(getActivity().getPackageManager()) != null){
-//
-//                    activityResultLauncher.launch(intent);
-//                }
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null){
+
+                    activityResultLauncher.launch(intent);
+                }
 //                final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
 //                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //                builder.setTitle("Add Photo!");
@@ -130,28 +130,28 @@ public class ProductUploadFragment extends Fragment {
 //                });
 //                builder.show();
 //                startActivityForResult(intent, 2);
-                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                Permissions.check(getActivity(), permissions, null, null, new PermissionHandler() {
-                    @Override
-                    public void onGranted() {
-                        new ImagePicker.Builder(getActivity())
-                                .mode(ImagePicker.Mode.CAMERA_AND_GALLERY)
-                                .compressLevel(ImagePicker.ComperesLevel.MEDIUM)
-                                .directory(ImagePicker.Directory.DEFAULT)
-                                .extension(ImagePicker.Extension.PNG)
-                                .scale(600, 600)
-                                .allowMultipleImages(false)
-                                .enableDebuggingMode(true)
-                                .build();
-                    }
-
-
-                    @Override
-                    public void onDenied(Context context, ArrayList<String> deniedPermissions) {
-                        super.onDenied(context, deniedPermissions);
-                    }
-
-                });
+//                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//                Permissions.check(getActivity(), permissions, null, null, new PermissionHandler() {
+//                    @Override
+//                    public void onGranted() {
+//                        new ImagePicker.Builder(getActivity())
+//                                .mode(ImagePicker.Mode.CAMERA_AND_GALLERY)
+//                                .compressLevel(ImagePicker.ComperesLevel.MEDIUM)
+//                                .directory(ImagePicker.Directory.DEFAULT)
+//                                .extension(ImagePicker.Extension.PNG)
+//                                .scale(600, 600)
+//                                .allowMultipleImages(false)
+//                                .enableDebuggingMode(true)
+//                                .build();
+//                    }
+//
+//
+//                    @Override
+//                    public void onDenied(Context context, ArrayList<String> deniedPermissions) {
+//                        super.onDenied(context, deniedPermissions);
+//                    }
+//
+//                });
 
             });
 
@@ -162,19 +162,19 @@ public class ProductUploadFragment extends Fragment {
             @Override
             public void onActivityResult(ActivityResult result) {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-//                    Bundle bundle = result.getData().getExtras();
-//                     bitmap = (Bitmap)bundle.get("data");
-//                    uploadCard.setVisibility(View.VISIBLE);
-//                    clickCard.setVisibility(View.GONE);
-//                    productImage.setImageBitmap(bitmap);
-                    List<String> mPaths = result.getData().getStringArrayListExtra(ImagePicker.EXTRA_IMAGE_PATH);
-                    Log.d("mPaths", mPaths.toString()+"");
-                    //Your Code
+                    Bundle bundle = result.getData().getExtras();
+                     bitmap = (Bitmap)bundle.get("data");
                     uploadCard.setVisibility(View.VISIBLE);
                     clickCard.setVisibility(View.GONE);
-                    imgFile = new File(mPaths.get(0));
-                    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                    productImage.setImageBitmap(myBitmap);
+                    productImage.setImageBitmap(bitmap);
+//                    List<String> mPaths = result.getData().getStringArrayListExtra(ImagePicker.EXTRA_IMAGE_PATH);
+//                    Log.d("mPaths", mPaths.toString()+"");
+//                    //Your Code
+//                    uploadCard.setVisibility(View.VISIBLE);
+//                    clickCard.setVisibility(View.GONE);
+//                    imgFile = new File(mPaths.get(0));
+//                    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//                    productImage.setImageBitmap(myBitmap);
                 }
             }
         });
@@ -196,23 +196,23 @@ public class ProductUploadFragment extends Fragment {
 //            productImage.setImageBitmap(myBitmap);
 //        }
 //    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.d("imagedata", "onActivityResult: "+ data);
-        if (requestCode == ImagePicker.IMAGE_PICKER_REQUEST_CODE && resultCode == RESULT_OK ) {
-            List<String> mPaths = data.getStringArrayListExtra(ImagePicker.EXTRA_IMAGE_PATH);
-            Log.d("mPaths", mPaths.toString());
-            //Your Code
-            uploadCard.setVisibility(View.VISIBLE);
-            clickCard.setVisibility(View.GONE);
-            imgFile = new File(String.valueOf(data.getData()));
-            Log.d("imagfile", "onActivityResult: "+imgFile.toString());
-            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-            productImage.setImageBitmap(myBitmap);
-        }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        Log.d("imagedata", "onActivityResult: "+ data);
+//        if (requestCode == ImagePicker.IMAGE_PICKER_REQUEST_CODE && resultCode == RESULT_OK ) {
+//            List<String> mPaths = data.getStringArrayListExtra(ImagePicker.EXTRA_IMAGE_PATH);
+//            Log.d("mPaths", mPaths.toString());
+//            //Your Code
+//            uploadCard.setVisibility(View.VISIBLE);
+//            clickCard.setVisibility(View.GONE);
+//            imgFile = new File(String.valueOf(data.getData()));
+//            Log.d("imagfile", "onActivityResult: "+imgFile.toString());
+//            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//            productImage.setImageBitmap(myBitmap);
+//        }
 
-    }
+//    }
 
 
 }

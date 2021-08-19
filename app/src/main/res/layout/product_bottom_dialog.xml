@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -40,7 +41,8 @@
                         <LinearLayout
                             android:id="@+id/layout1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            tools:ignore="Orientation">
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/click_card"
                                 android:layout_width="match_parent"
@@ -86,45 +88,45 @@
                                 </RelativeLayout>
 
                             </com.google.android.material.card.MaterialCardView>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/image_card"
-                                android:layout_width="match_parent"
-                                android:layout_height="160dp"
-                                app:cardElevation="5dp"
-                                app:cardUseCompatPadding="true"
-                                app:cardCornerRadius="10dp"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginRight="20dp"
-                                android:visibility="gone">
-
-                                <RelativeLayout
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content">-->
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/image_card"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-                                    <LinearLayout
+                                    android:layout_height="160dp"
+                                    app:cardElevation="5dp"
+                                    app:cardUseCompatPadding="true"
+                                    app:cardCornerRadius="10dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:visibility="gone">
+
+                                    <RelativeLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:layout_marginTop="10dp">
-                                        <ImageView
-                                            android:id="@+id/upload_image"
-                                            android:layout_width="wrap_content"
+                                        android:layout_height="match_parent">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_upload"/>
+                                            android:gravity="center"
+                                            android:padding="10dp">
+                                            <ImageView
+                                                android:id="@+id/upload_image"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/ic_upload"/>
 
 
-                                    </LinearLayout>
+                                        </LinearLayout>
 
-                                </RelativeLayout>
+                                    </RelativeLayout>
 
-                            </com.google.android.material.card.MaterialCardView>
+                                </com.google.android.material.card.MaterialCardView>
 
+<!--                            </LinearLayout>-->
                         </LinearLayout>
+
+
 
                         <!--                        <RelativeLayout-->
                         <!--                            android:id="@+id/rl_tv"-->

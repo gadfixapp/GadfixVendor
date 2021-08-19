@@ -9,62 +9,59 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.gadfixvendor.R;
+import com.app.gadfixvendor.databinding.PaymentViewBinding;
 
 import org.jetbrains.annotations.NotNull;
 
 public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHolder> {
-
-    String s1[],s2[],s3[];
-    int img[];
     Context context;
+    private LayoutInflater layoutInflater;
+    private Onclick onclick;
 
-    public PaymentAdapter(Context c, String str1[], String str2[], String str3[], int imgs[]){
-        s1=str1;
-        s2=str2;
-        s3=str3;
-        context=c;
-        img=imgs;
-
+    public interface Onclick{
+        void getPosition(int position);
     }
 
+    public PaymentAdapter(Context context,Onclick onclick) {
+        this.context = context;
+        this.onclick = onclick;
+    }
 
-   @Override
-    public MyViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
-       LayoutInflater layoutInflater=LayoutInflater.from(context);
-       View v=layoutInflater.inflate(R.layout.payment_view,parent,false);
-        return new MyViewHolder(v);
+    @Override
+    public PaymentAdapter.MyViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
+        PaymentViewBinding binding;
+        if (layoutInflater == null) {
+            layoutInflater = LayoutInflater.from(parent.getContext());
+        }
+        binding = DataBindingUtil.inflate(layoutInflater,R.layout.payment_view,parent,false);
+        return new PaymentAdapter.MyViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NotNull MyViewHolder holder, int position) {
-
-        holder.shname.setText(s1[position]);
-        holder.shaddress.setText(s2[position]);
-        holder.shcontact.setText(s3[position]);
-        holder.shimage.setImageResource(img[position]);
+        holder.binding.root.setOnClickListener(v -> {
+            onclick.getPosition(position);
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        return s1.length;
+        return 10;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
+        PaymentViewBinding binding;
 
-        TextView shname,shaddress,shcontact;
-        ImageView shimage;
-        Button btn;
+        public MyViewHolder( @NotNull PaymentViewBinding binding) {
+            super(binding.getRoot());
 
-        public MyViewHolder( @NotNull View itemView) {
-            super(itemView);
-            shname=itemView.findViewById(R.id.shop_name);
-            shaddress=itemView.findViewById(R.id.shopaddress);
-            shcontact=itemView.findViewById(R.id.shopcontact);
-            shimage=itemView.findViewById(R.id.img);
+            this.binding = binding;
+
         }
     }
 }
