@@ -5,8 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.app.gadfixvendor.Adapters.PaymentAdapter;
 import com.app.gadfixvendor.R;
@@ -35,6 +42,16 @@ public class PaymentActivity extends BaseActivity<ActivityPaymentBinding> implem
 
     @Override
     public void getPosition(int position) {
+
         Log.d("card_position", "getPosition: "+position);
+        showdialogbox();
+    }
+
+    void showdialogbox(){
+        final Dialog dialog = new Dialog(PaymentActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.payment_dialogue);
+        dialog.show();
     }
 }

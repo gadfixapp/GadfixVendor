@@ -43,7 +43,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NotNull MyViewHolder holder, int position) {
-        holder.binding.root.setOnClickListener(v -> {
+        holder.binding.payIc.setOnClickListener(v -> {
             onclick.getPosition(position);
         });
 
