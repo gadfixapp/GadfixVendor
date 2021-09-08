@@ -71,6 +71,7 @@ public class GadfixApiController {
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                         if (response.isSuccessful()){
                             if (response.body().getResponseCode() == 200){
+                                userSharedpreference.saveBooleanData(SharedPreferenceConfig.IS_USER_LOGIN, true);
                                 onUserLoginListener.onSuccess(response.body());
                             }else if (response.body().getResponseCode() == 100){
                                 onUserLoginListener.onFailure(response.body().getMessage());
