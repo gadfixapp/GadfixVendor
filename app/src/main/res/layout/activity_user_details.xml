@@ -77,7 +77,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
-                                    android:id="@+id/mobile"
+                                    android:id="@+id/shop_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -125,6 +125,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
+                                    android:id="@+id/licence_no"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -153,7 +154,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_alignParentLeft="true"
-                            android:id="@+id/click_card">
+                            android:id="@+id/user_card">
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -189,7 +190,7 @@
 
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/user_card"
+                            android:id="@+id/user_pic_card"
                             android:layout_width="170dp"
                             android:layout_height="170dp"
                             android:layout_gravity="center_vertical"
@@ -207,12 +208,15 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:padding="5dp">
+                                    android:padding="5dp"
+                                    android:layout_centerInParent="true">
                                     <ImageView
                                         android:id="@+id/user_pic"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_upload"/>
+                                        android:scaleType="fitXY"
+                                        android:src="@drawable/ic_upload"
+                                        android:layout_gravity="center"/>
                                 </LinearLayout>
 
                             </RelativeLayout>
@@ -220,6 +224,7 @@
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_shop_card"
                             android:layout_width="170dp"
                             android:layout_height="170dp"
                             android:layout_gravity="center_vertical"
@@ -263,6 +268,40 @@
 
                         </com.google.android.material.card.MaterialCardView>
 
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_shop"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_gravity="center_vertical"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:visibility="gone">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:layout_centerInParent="true">
+                                    <ImageView
+                                        android:id="@+id/user_shop_pic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:scaleType="fitXY"
+                                        android:src="@drawable/ic_upload"
+                                        android:layout_gravity="center"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
 
                     </RelativeLayout>
 
@@ -301,6 +340,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
+                                    android:id="@+id/since"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -348,6 +388,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
+                                    android:id="@+id/registration_no"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -395,6 +436,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
+                                    android:id="@+id/gst_no"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -442,6 +484,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
+                                    android:id="@+id/address"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -502,6 +545,7 @@
                                     android:layout_marginTop="15dp">
 
                                     <EditText
+                                        android:id="@+id/pin_code"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:background="@null"
@@ -555,6 +599,7 @@
                                         android:layout_marginTop="15dp">
 
                                         <EditText
+                                            android:id="@+id/landmark"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:background="@null"
@@ -604,6 +649,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
+                                    android:id="@+id/timing"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -651,6 +697,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
+                                    android:id="@+id/no_of_employee"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -698,6 +745,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
+                                    android:id="@+id/aadhar_no"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -717,6 +765,7 @@
                         android:layout_height="wrap_content">
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_font_aadhar_card"
                             android:layout_width="170dp"
                             android:layout_height="170dp"
                             android:layout_gravity="center_vertical"
@@ -761,6 +810,41 @@
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_font_aadhar"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_gravity="center_vertical"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentLeft="true"
+                            android:visibility="gone">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:layout_centerInParent="true">
+                                    <ImageView
+                                        android:id="@+id/user_font_aadhar_pic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:scaleType="fitXY"
+                                        android:src="@drawable/ic_upload"
+                                        android:layout_gravity="center"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_back_aadhar_card"
                             android:layout_width="170dp"
                             android:layout_height="170dp"
                             android:layout_gravity="center_vertical"
@@ -804,6 +888,40 @@
                             </RelativeLayout>
 
                         </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_back_aadhar"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_gravity="center_vertical"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:visibility="gone">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:layout_centerInParent="true">
+                                    <ImageView
+                                        android:id="@+id/user_back_aadhar_pic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:scaleType="fitXY"
+                                        android:src="@drawable/ic_upload"
+                                        android:layout_gravity="center"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
                     </RelativeLayout>
 
                     <TextView
@@ -841,6 +959,7 @@
                                 android:layout_marginTop="15dp">
 
                                 <EditText
+                                    android:id="@+id/pan_no"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -860,6 +979,7 @@
                         android:layout_height="wrap_content">
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_font_pan_card"
                             android:layout_width="170dp"
                             android:layout_height="170dp"
                             android:layout_gravity="center_vertical"
@@ -906,6 +1026,41 @@
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_font_pan"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_gravity="center_vertical"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentLeft="true"
+                            android:visibility="gone">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:layout_centerInParent="true">
+                                    <ImageView
+                                        android:id="@+id/user_font_pan_pic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:scaleType="fitXY"
+                                        android:src="@drawable/ic_upload"
+                                        android:layout_gravity="center"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_back_pan_card"
                             android:layout_width="170dp"
                             android:layout_height="170dp"
                             android:layout_gravity="center_vertical"
@@ -951,28 +1106,113 @@
                             </RelativeLayout>
 
                         </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/user_back_pan"
+                            android:layout_width="170dp"
+                            android:layout_height="170dp"
+                            android:layout_gravity="center_vertical"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true"
+                            android:visibility="gone">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:layout_centerInParent="true">
+                                    <ImageView
+                                        android:id="@+id/user_back_pan_pic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:scaleType="fitXY"
+                                        android:src="@drawable/ic_upload"
+                                        android:layout_gravity="center"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
                     </RelativeLayout>
 
-                    <LinearLayout
-                        android:id="@+id/next"
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/next"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        -->
+<!--                        android:layout_marginRight="50dp"-->
+<!--                        android:layout_marginLeft="50dp"-->
+<!--                        android:gravity="center"-->
+<!--                        -->
+<!--                        android:layout_marginTop="30dp">-->
+<!--                        <com.google.android.material.button.MaterialButton-->
+<!--                            android:id="@+id/bt_register"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="60dp"-->
+<!--                            app:cornerRadius="12dp"-->
+<!--                            android:backgroundTint="@color/orange"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:text="@string/next"/>-->
+
+<!--                    </LinearLayout>-->
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/bt_register"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        app:cardCornerRadius="12dp"
                         android:layout_below="@+id/r3"
-                        android:layout_marginRight="50dp"
-                        android:layout_marginLeft="50dp"
-                        android:gravity="center"
+                        android:backgroundTint="@color/orange"
+                        app:cardUseCompatPadding="true"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_marginTop="30dp">
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/bt_register"
+                        android:layout_marginTop="20dp">
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            app:cornerRadius="12dp"
-                            android:backgroundTint="@color/orange"
-                            android:textColor="@color/white"
-                            android:text="@string/next"/>
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/tv_submit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/next"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/product_sans"
+                                android:textColor="@color/white"
+                                android:layout_centerInParent="true"/>
+                            <LinearLayout
+                                android:id="@+id/progress_bar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                android:visibility="gone">
+                                <ProgressBar
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:indeterminateTint="@color/white"
+                                    android:padding="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold"
+                                    android:textSize="18dp"
+                                    android:text="Please Wait..."
+                                    android:padding="5dp"/>
 
-                    </LinearLayout>
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
                 </RelativeLayout>
 
 

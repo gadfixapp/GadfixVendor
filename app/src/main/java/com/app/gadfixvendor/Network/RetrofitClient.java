@@ -1,7 +1,9 @@
 package com.app.gadfixvendor.Network;
 
 import android.content.Context;
+import android.util.Log;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.library.baseAdapters.BuildConfig;
 
 import com.app.gadfixvendor.Interface.ApiService;
@@ -19,9 +21,12 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitClient {
-    public static String BASE_URL="http://biharivendor.com/admin/WebApi/";
+    private static Retrofit retrofit = null;
+    private static HttpLoggingInterceptor interceptor;
+    private static OkHttpClient client;
     private static Context context;
 
 
@@ -31,10 +36,16 @@ public class RetrofitClient {
             Request request = chain.request();
 
             UserSharedpreference userSharedpreference = UserSharedpreference.getInstance(context);
+            Log.d("dededede", "intercept: "+ userSharedpreference.getStringData(SharedPreferenceConfig.DEVICE_ID));
+//
             request = request.newBuilder()
                     .addHeader("Accept", "application/json")
                     .addHeader("Deviceid", userSharedpreference.getStringData(SharedPreferenceConfig.DEVICE_ID) == null ?
                             "" : userSharedpreference.getStringData(SharedPreferenceConfig.DEVICE_ID))
+                    .addHeader("Userid", userSharedpreference.getStringData(SharedPreferenceConfig.USER_ID) == null ?
+                            "" : userSharedpreference.getStringData(SharedPreferenceConfig.USER_ID))
+//                    .addHeader("Type", userDetailsPrefrennce.getStringData(SharedPreferenceConfig.USER_TYPE) == null ?
+//                            "" : userDetailsPrefrennce.getStringData(SharedPreferenceConfig.USER_TYPE))
                     .addHeader("Content-Type", "application/json")
                     .build();
             Response response = chain.proceed(request);
@@ -42,32 +53,40 @@ public class RetrofitClient {
         }
     };
 
-    /**
-     * get retrofit service
-     *
-     * @return
-     */
-    public static ApiService getOfferChargeAppWebService() {
-        OkHttpClient.Builder client = new OkHttpClient.Builder().connectTimeout(60, TimeUnit
-                .SECONDS).readTimeout(60, TimeUnit.SECONDS);
+    static Retrofit getClient() {
+        interceptor = new HttpLoggingInterceptor();
+        if (retrofit == null) {
+            if (BuildConfig.DEBUG) {
+                interceptor = new HttpLoggingInterceptor();
+                interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                client = new OkHttpClient.Builder()
+                        .addInterceptor(REQUEST_INTERCEPTOR)
+                        .addInterceptor(interceptor)
+//                        .connectTimeout(10, TimeUnit.MINUTES)
+//                        .readTimeout(5, TimeUnit.MINUTES)
+//                        .writeTimeout(5, TimeUnit.MINUTES)
+                        .build();
 
-        if (BuildConfig.DEBUG) {
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            client.addInterceptor(interceptor);
+            }else{
+                client = new OkHttpClient.Builder()
+                        .addInterceptor(REQUEST_INTERCEPTOR)
+                        .addInterceptor(interceptor)
+//                        .connectTimeout(10, TimeUnit.MINUTES)
+//                        .readTimeout(5, TimeUnit.MINUTES)
+//                        .writeTimeout(5, TimeUnit.MINUTES)
+                        .build();
+            }
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(NetworkConfig.GET_BASE_URL())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .client(client)
+                    .build();
         }
+        return retrofit;
+    }
 
-        Dispatcher dispatcher = new Dispatcher();
-        dispatcher.setMaxRequests(5);
-
-        client.dispatcher(dispatcher);
-        client.addInterceptor(REQUEST_INTERCEPTOR);
-
-        return new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(client.build())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(ApiService.class);
+    public static ApiService getInterface() {
+        return getClient().create(ApiService.class);
     }
 }

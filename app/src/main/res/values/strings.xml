@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">GadfixVendor</string>
 
+    <string name="failed_to_connect">Unable to resolve host</string>
+    <string name="facebook_app_id">1006241186186131</string>
+    <string name="fb_login_protocol_scheme">fb1006241186186131</string>
+
     //projects text
     <string name="welcome">Welcome to GadFix.\nNow sell your services to millions of customer</string>
     <string name="register">Register Now</string>

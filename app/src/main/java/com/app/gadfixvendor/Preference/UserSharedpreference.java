@@ -7,12 +7,12 @@ import android.util.Log;
 import java.util.Map;
 
 public class UserSharedpreference {
-    private static UserSharedpreference userSharedpreference;
+    private static com.app.gadfixvendor.Preference.UserSharedpreference userSharedpreference;
     private SharedPreferences sharedPreferences;
 
-    public static UserSharedpreference getInstance(Context context) {
+    public static com.app.gadfixvendor.Preference.UserSharedpreference getInstance(Context context) {
         if (userSharedpreference == null) {
-            userSharedpreference = new UserSharedpreference(context);
+            userSharedpreference = new com.app.gadfixvendor.Preference.UserSharedpreference(context);
         }
         return userSharedpreference;
     }

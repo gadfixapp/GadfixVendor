@@ -98,27 +98,55 @@
 
                     </LinearLayout>
 
-
-                    <LinearLayout
-                        android:id="@+id/login"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/bt_verify"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        app:cardCornerRadius="12dp"
                         android:layout_below="@+id/l_tv1"
-                        android:layout_marginRight="50dp"
-                        android:layout_marginLeft="50dp"
-                        android:gravity="center"
-                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/orange"
+                        app:cardUseCompatPadding="true"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginTop="30dp">
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/bt_verify"
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            app:cornerRadius="12dp"
-                            android:backgroundTint="@color/orange"
-                            android:textColor="@color/white"
-                            android:text="@string/verify"/>
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/tv_otp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/verify"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/product_sans"
+                                android:textColor="@color/white"
+                                android:layout_centerInParent="true"/>
+                            <LinearLayout
+                                android:id="@+id/progress_bar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                android:visibility="gone">
+                                <ProgressBar
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:indeterminateTint="@color/white"
+                                    android:padding="5dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold"
+                                    android:textSize="18dp"
+                                    android:text="Please Wait..."
+                                    android:padding="5dp"/>
 
-                    </LinearLayout>
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
 
                 </RelativeLayout>
 
