@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -31,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     float v=0;
     private GadfixApiController gadfixApiController;
     private UserSharedpreference userSharedpreference;
-    private Boolean value = false;
+    private String value;
 
 
     @Override
@@ -41,7 +42,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         userSharedpreference = new UserSharedpreference(this);
 
         gadfixApiController = new GadfixApiController(this);
-        value = userSharedpreference.getBooleanData(SharedPreferenceConfig.USER_DETAILS);
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        value = sh.getString("true", "");
         Log.d("hsfkbskdfb", "onCreate: "+value);
 
         binding.card.setTranslationX(800);
@@ -95,11 +97,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Log.d("codeeeee", "onSuccess: "+ loginResponse.getResponseCode());
                             if (loginResponse.getResponseCode() == 200){
                                 userSharedpreference.saveStringData(SharedPreferenceConfig.USER_ID,loginResponse.getData().getUserId());
-                                if (value){
-                                    startActivity(new Intent(LoginActivity.this, UserDetailsActivity.class));
-                                    finish();
-                                }else if (!value){
+                                if (value.equals("Success")){
+                                    Log.d("shgbvhsbvjhs", "onSuccess: "+value);
+                                    userSharedpreference.saveBooleanData(SharedPreferenceConfig.IS_USER_LOGIN, true);
                                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                    finish();
+                                }else{
+                                    Log.d("shgbvhsbvjhs", "onSuccess: "+value);
+                                    startActivity(new Intent(LoginActivity.this, UserDetailsActivity.class));
                                     finish();
                                 }
 

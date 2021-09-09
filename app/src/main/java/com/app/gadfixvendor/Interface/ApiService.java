@@ -6,8 +6,12 @@ import com.app.gadfixvendor.Models.LoginModel.LoginRequest;
 import com.app.gadfixvendor.Models.LoginModel.LoginResponse;
 import com.app.gadfixvendor.Models.OtpModel.OtpRequest;
 import com.app.gadfixvendor.Models.OtpModel.OtpResponse;
+import com.app.gadfixvendor.Models.ProductModel.ProductResponse;
+import com.app.gadfixvendor.Models.ProductUploadModel.ProductUploadResponse;
 import com.app.gadfixvendor.Models.RegistrationModel.RegistrationRequest;
 import com.app.gadfixvendor.Models.RegistrationModel.RegistrationResponse;
+import com.app.gadfixvendor.Models.ServiceUploadModel.ServiceResponse;
+import com.app.gadfixvendor.Models.ServiceUploadModel.ServiceUploadResponse;
 import com.app.gadfixvendor.Models.UserDetailsModel.UserDetailsResponse;
 import com.app.gadfixvendor.Utils.OtherConfig;
 
@@ -15,6 +19,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -47,6 +52,8 @@ public interface ApiService {
                                              @Part("total_emp") RequestBody totalEmp,
                                              @Part("adhar_num") RequestBody aadharNo,
                                              @Part("pan_num") RequestBody panNo,
+                                             @Part("longitude1") RequestBody longitude,
+                                             @Part("lattitude1") RequestBody latitude,
                                              @Part MultipartBody.Part imageFile,
                                              @Part MultipartBody.Part imageFile1,
                                              @Part MultipartBody.Part imageFile2,
@@ -55,4 +62,30 @@ public interface ApiService {
                                              @Part MultipartBody.Part imageFile5);
 
 
-}
+
+    @Multipart
+    @POST("add_product")
+    Call<ProductUploadResponse> getUploadProduct(@Part("product_name")RequestBody productName,
+                                                 @Part("type")RequestBody productType,
+                                                 @Part("mrp_price")RequestBody productMrp,
+                                                 @Part("selling_price")RequestBody productSellingPrice,
+                                                 @Part MultipartBody.Part productImage);
+
+    @GET("get_product")
+    Call<ProductResponse> getProduct();
+
+    @Multipart
+    @POST("services_product")
+    Call<ServiceUploadResponse> getServiceUpload(@Part("service_type")RequestBody serviceType,
+                                                 @Part("mrp_price")RequestBody serviceMrp,
+                                                 @Part("selling_price")RequestBody serviceSellingPrice,
+                                                 @Part("info")RequestBody serviceInfo,
+                                                 @Part MultipartBody.Part serviceImage);
+
+    @POST("get_services")
+    Call<ServiceResponse> getService();
+
+    }
+
+
+

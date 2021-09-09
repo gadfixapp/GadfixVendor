@@ -10,8 +10,14 @@ import com.app.gadfixvendor.Models.LoginModel.LoginRequest;
 import com.app.gadfixvendor.Models.LoginModel.LoginResponse;
 import com.app.gadfixvendor.Models.OtpModel.OtpRequest;
 import com.app.gadfixvendor.Models.OtpModel.OtpResponse;
+import com.app.gadfixvendor.Models.ProductModel.ProductResponse;
+import com.app.gadfixvendor.Models.ProductUploadModel.ProductUploadRequest;
+import com.app.gadfixvendor.Models.ProductUploadModel.ProductUploadResponse;
 import com.app.gadfixvendor.Models.RegistrationModel.RegistrationRequest;
 import com.app.gadfixvendor.Models.RegistrationModel.RegistrationResponse;
+import com.app.gadfixvendor.Models.ServiceUploadModel.ServiceResponse;
+import com.app.gadfixvendor.Models.ServiceUploadModel.ServiceUploadRequest;
+import com.app.gadfixvendor.Models.ServiceUploadModel.ServiceUploadResponse;
 import com.app.gadfixvendor.Models.UserDetailsModel.UserDetailsRequest;
 import com.app.gadfixvendor.Models.UserDetailsModel.UserDetailsResponse;
 import com.app.gadfixvendor.Preference.SharedPreferenceConfig;
@@ -71,7 +77,6 @@ public class GadfixApiController {
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                         if (response.isSuccessful()){
                             if (response.body().getResponseCode() == 200){
-                                userSharedpreference.saveBooleanData(SharedPreferenceConfig.IS_USER_LOGIN, true);
                                 onUserLoginListener.onSuccess(response.body());
                             }else if (response.body().getResponseCode() == 100){
                                 onUserLoginListener.onFailure(response.body().getMessage());
@@ -157,7 +162,9 @@ public class GadfixApiController {
         RequestBody noOfEmployee = RequestBody.create(okhttp3.MultipartBody.FORM, userDetailsRequest.getNoOfEmployee());
         RequestBody aadharNo = RequestBody.create(okhttp3.MultipartBody.FORM, userDetailsRequest.getAadharNo());
         RequestBody panNo = RequestBody.create(okhttp3.MultipartBody.FORM, userDetailsRequest.getPanNo());
-        apiService.getUserDetails(shopName,licenceNo,since,registrationNo,gstNo,address,pinCode,landmark,timing,noOfEmployee,aadharNo,panNo,imageFile,imageFile1,imageFile2,imageFile3,imageFile4,imageFile5)
+        RequestBody longitude = RequestBody.create(okhttp3.MultipartBody.FORM, userDetailsRequest.getLongitude());
+        RequestBody latitude = RequestBody.create(okhttp3.MultipartBody.FORM, userDetailsRequest.getLatitude());
+        apiService.getUserDetails(shopName,licenceNo,since,registrationNo,gstNo,address,pinCode,landmark,timing,noOfEmployee,aadharNo,panNo,longitude,latitude,imageFile,imageFile1,imageFile2,imageFile3,imageFile4,imageFile5)
                 .enqueue(new Callback<UserDetailsResponse>() {
                     @Override
                     public void onResponse(Call<UserDetailsResponse> call, Response<UserDetailsResponse> response) {
@@ -233,5 +240,127 @@ public class GadfixApiController {
             return fileToUpload;
         }
         return null;
+    }
+
+    public void getProductUpload(ProductUploadRequest productUploadRequest, final AppListener.OnProductUploadListener onProductUploadListener){
+        MultipartBody.Part productImage = getFileProductUploadImage(productUploadRequest.getProductImage(), "product_img");
+        RequestBody productName = RequestBody.create(okhttp3.MultipartBody.FORM, productUploadRequest.getProductName());
+        RequestBody productType = RequestBody.create(okhttp3.MultipartBody.FORM, productUploadRequest.getProductType());
+        RequestBody productMrp = RequestBody.create(okhttp3.MultipartBody.FORM, productUploadRequest.getProductMrp());
+        RequestBody productSellingPrice = RequestBody.create(okhttp3.MultipartBody.FORM, productUploadRequest.getProductSellingPrice());
+        apiService.getUploadProduct(productName,productType,productMrp,productSellingPrice,productImage)
+                .enqueue(new Callback<ProductUploadResponse>() {
+                    @Override
+                    public void onResponse(Call<ProductUploadResponse> call, Response<ProductUploadResponse> response) {
+                        if (response.isSuccessful()){
+                           if (response.body().getResponseCode() == 200){
+                               onProductUploadListener.onSuccess(response.body());
+                           }else{
+                               onProductUploadListener.onFailure(response.body().getMessage());
+                           }
+                        }else {
+                            onProductUploadListener.onFailure(OtherConfig.ERROR_MESSAGE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ProductUploadResponse> call, Throwable t) {
+                        onProductUploadListener.onFailure(t.getMessage());
+
+                    }
+                });
+    }
+
+    private MultipartBody.Part getFileProductUploadImage(File productImage, String product_img) {
+        if (productImage != null) {
+            RequestBody mFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), productImage);
+            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData(product_img, productImage.getName(), mFile1);
+            return fileToUpload;
+        }
+        return null;
+    }
+
+    public void getProduct(final  AppListener.OnProductListener onProductListener){
+        apiService.getProduct()
+                .enqueue(new Callback<ProductResponse>() {
+                    @Override
+                    public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+                        if (response.isSuccessful()){
+                            if (response.body().getResponseCode()==200){
+                                onProductListener.onSuccess(response.body());
+                            }else {
+                                onProductListener.onFailure(response.body().getMessage());
+                            }
+                        }else {
+                            onProductListener.onFailure(OtherConfig.ERROR_MESSAGE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ProductResponse> call, Throwable t) {
+                        onProductListener.onFailure(t.getMessage());
+
+                    }
+                });
+    }
+
+    public void getUploadService(ServiceUploadRequest serviceUploadRequest, final AppListener.OnServiceUploadListener onServiceUploadListener){
+        MultipartBody.Part serviceImage = getFileServiceUploadImage(serviceUploadRequest.getServiceImage(), "service_img");
+        RequestBody serviceType = RequestBody.create(okhttp3.MultipartBody.FORM, serviceUploadRequest.getServiceType());
+        RequestBody serviceMrp = RequestBody.create(okhttp3.MultipartBody.FORM, serviceUploadRequest.getServiceMrp());
+        RequestBody serviceSellingPrice = RequestBody.create(okhttp3.MultipartBody.FORM, serviceUploadRequest.getServiceSellingPrice());
+        RequestBody serviceInfo = RequestBody.create(okhttp3.MultipartBody.FORM, serviceUploadRequest.getServiceInfo());
+        apiService.getServiceUpload(serviceType,serviceMrp,serviceSellingPrice,serviceInfo,serviceImage)
+                .enqueue(new Callback<ServiceUploadResponse>() {
+                    @Override
+                    public void onResponse(Call<ServiceUploadResponse> call, Response<ServiceUploadResponse> response) {
+                        if (response.isSuccessful()){
+                            if (response.body().getResponseCode() == 200){
+                                onServiceUploadListener.onSuccess(response.body());
+                            }else {
+                                onServiceUploadListener.onFailure(response.body().getSuccess());
+                            }
+                        }else {
+                            onServiceUploadListener.onFailure(OtherConfig.ERROR_MESSAGE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ServiceUploadResponse> call, Throwable t) {
+                      onServiceUploadListener.onFailure(t.getMessage());
+                    }
+                });
+    }
+
+    private MultipartBody.Part getFileServiceUploadImage(File serviceImage, String service_img) {
+        if (serviceImage != null) {
+            RequestBody mFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), serviceImage);
+            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData(service_img, serviceImage.getName(), mFile1);
+            return fileToUpload;
+        }
+        return null;
+    }
+
+    public void getService(final AppListener.OnServiceListener onServiceListener){
+        apiService.getService()
+                .enqueue(new Callback<ServiceResponse>() {
+                    @Override
+                    public void onResponse(Call<ServiceResponse> call, Response<ServiceResponse> response) {
+                        if (response.isSuccessful()){
+                            if (response.body().getResponseCode() == 200){
+                                onServiceListener.onSuccess(response.body());
+                            }else {
+                                onServiceListener.onFailure(response.body().getMessage());
+                            }
+                        }else {
+                            onServiceListener.onFailure(OtherConfig.ERROR_MESSAGE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ServiceResponse> call, Throwable t) {
+                      onServiceListener.onFailure(t.getMessage());
+                    }
+                });
     }
 }

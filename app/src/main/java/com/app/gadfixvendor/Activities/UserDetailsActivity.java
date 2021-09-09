@@ -12,10 +12,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -32,6 +34,7 @@ import com.app.gadfixvendor.Network.GadfixApiController;
 import com.app.gadfixvendor.Preference.SharedPreferenceConfig;
 import com.app.gadfixvendor.Preference.UserSharedpreference;
 import com.app.gadfixvendor.R;
+import com.app.gadfixvendor.Utils.AppUtils;
 import com.app.gadfixvendor.databinding.ActivityUserDetailsBinding;
 import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
@@ -51,6 +54,9 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import io.nlopez.smartlocation.OnLocationUpdatedListener;
+import io.nlopez.smartlocation.SmartLocation;
+
 public class UserDetailsActivity extends AppCompatActivity implements View.OnClickListener {
     private ActivityUserDetailsBinding binding;
     private File imgFile = null;
@@ -63,6 +69,7 @@ public class UserDetailsActivity extends AppCompatActivity implements View.OnCli
     private int textValue = 0, textValue1 = 0, textValue2 = 0, textValue3 = 0, textValue4 = 0, textValue5 = 0;
     private GadfixApiController gadfixApiController;
     private UserSharedpreference userSharedpreference;
+    private String latitude = "", longitude = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -427,6 +434,35 @@ public class UserDetailsActivity extends AppCompatActivity implements View.OnCli
         });
 
         binding.btRegister.setOnClickListener(this);
+        if (AppUtils.isGpsEnabled(getBaseContext())) {
+            String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+            Permissions.check(UserDetailsActivity.this, permissions, null, null, new PermissionHandler() {
+                @Override
+                public void onGranted() {
+                    SmartLocation.with(UserDetailsActivity.this).location()
+                            .oneFix()
+                            .start(new OnLocationUpdatedListener() {
+                                @Override
+                                public void onLocationUpdated(Location location) {
+                                    latitude = String.valueOf(location.getLatitude());
+                                    longitude = String.valueOf(location.getLongitude());
+//                                    getData(longitude,latitude);
+                                    Log.d("tuyuyew",longitude+"");
+                                    Log.d("tuyuyew",latitude+"");
+                                }
+                            });
+                }
+
+                @Override
+                public void onDenied(Context context, ArrayList<String> deniedPermissions) {
+                    super.onDenied(context, deniedPermissions);
+//                    getData(longitude,latitude);
+                }
+            });
+        } else {
+//            getData(longitude,latitude);
+        }
+
 
     }
 
@@ -484,7 +520,8 @@ public class UserDetailsActivity extends AppCompatActivity implements View.OnCli
 
 
         }
-    }
+
+}
 
 
     @Override
@@ -561,6 +598,8 @@ public class UserDetailsActivity extends AppCompatActivity implements View.OnCli
                     userDetailsRequest.setNoOfEmployee(binding.noOfEmployee.getText().toString());
                     userDetailsRequest.setAadharNo(binding.aadharNo.getText().toString());
                     userDetailsRequest.setPanNo(binding.panNo.getText().toString());
+                    userDetailsRequest.setLongitude(longitude);
+                    userDetailsRequest.setLatitude(latitude);
                     userDetailsRequest.setUserPic(imgFile);
                     userDetailsRequest.setUserShopPic(imgFile1);
                     userDetailsRequest.setUserFontAadhar(imgFile2);
@@ -573,7 +612,11 @@ public class UserDetailsActivity extends AppCompatActivity implements View.OnCli
                             if (userDetailsResponse.getResponseCode() == 200) {
                                 binding.progressBar.setVisibility(View.GONE);
                                 binding.tvSubmit.setVisibility(View.VISIBLE);
-                                userSharedpreference.saveBooleanData(SharedPreferenceConfig.USER_DETAILS,true);
+                                SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                                // write all the data entered by the user in SharedPreference and apply
+                                myEdit.putString("true","Success");
+                                myEdit.apply();
                                 Snackbar snackBar = Snackbar.make(v, userDetailsResponse.getMessage(), Snackbar.LENGTH_LONG);
                                 snackBar.show();
                                 startActivity(new Intent(UserDetailsActivity.this,HomeActivity.class));

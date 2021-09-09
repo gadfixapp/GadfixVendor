@@ -1,5 +1,6 @@
 package com.app.gadfixvendor.Adapters;
 
+import android.content.Context;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.gadfixvendor.Models.ServiceUploadModel.ServiceResponseData;
 import com.app.gadfixvendor.R;
 import com.app.gadfixvendor.databinding.ServiceUploadRowBinding;
+import com.bumptech.glide.Glide;
+
+import java.util.List;
 
 public class ServiceUploadAdapter extends RecyclerView.Adapter<ServiceUploadAdapter.uploadViewHolder> {
     private LayoutInflater layoutInflater;
+    private Context context;
+    private List<ServiceResponseData> serviceResponseDataList;
+
+    public ServiceUploadAdapter(Context context, List<ServiceResponseData> serviceResponseDataList) {
+        this.context = context;
+        this.serviceResponseDataList = serviceResponseDataList;
+    }
+
     @NonNull
     @Override
     public ServiceUploadAdapter.uploadViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -27,12 +40,19 @@ public class ServiceUploadAdapter extends RecyclerView.Adapter<ServiceUploadAdap
 
     @Override
     public void onBindViewHolder(@NonNull uploadViewHolder holder, int position) {
-        holder.binding.tvMrp.setPaintFlags(holder.binding.tvMrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        ServiceResponseData data = serviceResponseDataList.get(position);
+        Glide.with(context).load(data.getServiceImg()).into(holder.binding.serviceImage);
+        holder.binding.serviceType.setText(data.getServiceType());
+        holder.binding.serviceInfo.setText(data.getInfo());
+        holder.binding.serviceSellingPrice.setText(context.getResources().getString(R.string.Rs)+data.getSellingPrice());
+        holder.binding.serviceMrp.setText("MRP"+data.getMrpPrice());
+        holder.binding.serviceOff.setText(data.getOfferPercent()+" %");
+        holder.binding.serviceMrp.setPaintFlags(holder.binding.serviceMrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return serviceResponseDataList.size();
     }
 
     public class uploadViewHolder extends RecyclerView.ViewHolder{

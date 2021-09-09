@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.app.gadfixvendor">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,12 +17,14 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GadfixVendor">
-        <activity android:name=".Activities.NotificationActivity"></activity>
+        <activity android:name=".Activities.ServiceUploadDetailsActivity"></activity>
+        <activity android:name=".Activities.ProductUploadDetailsActivity" />
+        <activity android:name=".Activities.NotificationActivity" />
         <activity android:name=".Activities.ProfileActivity" />
         <activity android:name=".Activities.TicketActivity" />
         <activity android:name=".Activities.UploadActivity" />
@@ -45,14 +48,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <service android:name=".FeatchCurrentLocationAddress" />
-<!--        <meta-data-->
-<!--            android:name="preloaded_fonts"-->
-<!--            android:resource="@array/preloaded_fonts" />-->
 
-<!--        <meta-data-->
-<!--            android:name="com.facebook.sdk.ApplicationId"-->
-<!--            android:value="@string/facebook_app_id" />-->
+        <service android:name=".FeatchCurrentLocationAddress" /> <!-- <meta-data -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -62,6 +59,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"
+            tools:replace="android:value" />
     </application>
 
 </manifest>

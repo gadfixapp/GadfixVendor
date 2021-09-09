@@ -15,6 +15,8 @@ public class UserDetailsRequest {
     private String noOfEmployee;
     private String aadharNo;
     private String panNo;
+    private String longitude;
+    private String latitude;
     private File userPic;
     private File userShopPic;
     private File userFontAadhar;
@@ -116,6 +118,21 @@ public class UserDetailsRequest {
 
     public void setPanNo(String panNo) {
         this.panNo = panNo;
+    }
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
     public File getUserPic() {
