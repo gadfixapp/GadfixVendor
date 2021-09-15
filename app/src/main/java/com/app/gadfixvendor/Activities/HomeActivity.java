@@ -292,7 +292,6 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding> {
             notificationCount = view.findViewById(R.id.notification_count);
             notificationCount.setText(String.valueOf(pandingNotification));
 
-
             notificationCount.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -1,134 +1,928 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#0c0c0c">
 
-        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="#0c0c0c">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginEnd="261dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/profile_icon_white" />
+
+            <ImageView
+                android:id="@+id/logout"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/logout_icon"/>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="#fece2f"
-            android:padding="20dp">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_1"
+            android:background="@drawable/profile_text_bg">
 
-            <ImageView
-                android:id="@+id/profile_image"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/profile" />
 
-            <TextView
-                android:id="@+id/full_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/profile_image"
-                android:fontFamily="@font/bungee"
-                android:text="example"
-                android:textColor="@color/black"
-                android:textSize="30sp" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/profile_text_bg">
 
-            <TextView
-                android:id="@+id/logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LogOut"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                android:padding="5dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_shop"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/shop_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Shop name"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/shop_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginLeft="10dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/ic_shop_icon"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/shop_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@id/shop_text"
+                                    android:layout_toRightOf="@+id/shop_lay_icon"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="25dp">
+    <!--                                android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="Shop name"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"
+                                        android:gravity="center_vertical"
+                                        android:textColor="#6a6a6a"/>
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+<!--                        <View-->
+<!--                            android:id="@+id/divider_shop"-->
+<!--                            android:layout_below="@id/lay_shop"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:layout_marginLeft="17dp"-->
+<!--                            android:layout_marginRight="17dp"-->
+<!--                            android:background="@color/black" />-->
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_mail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_shop"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/mail_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Mail id"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/mail_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="23dp"
+                                    android:layout_marginLeft="13dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:src="@drawable/ic_email"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/mail_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@id/mail_text"
+                                    android:layout_toRightOf="@+id/mail_lay_icon"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="25dp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="abcd@gmail.com"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"
+                                        android:gravity="center_vertical"
+                                        android:textColor="#6a6a6a"/>
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+<!--                        <View-->
+<!--                            android:id="@+id/divider_mail"-->
+<!--                            android:layout_below="@id/lay_mail"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:layout_marginLeft="17dp"-->
+<!--                            android:layout_marginRight="17dp"-->
+<!--                            android:background="@color/black" />-->
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lay_phone"
+                            android:layout_marginTop="15dp"
+                            android:layout_below="@+id/lay_mail"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/phone_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Phone Number"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/phone_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginLeft="13dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/ic_phone"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ph_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_below="@id/phone_text"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_toRightOf="@+id/phone_lay_icon"
+                                    android:layout_marginLeft="7dp"
+                                    android:layout_marginRight="25dp">
+<!--                                    android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:gravity="center_vertical"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="9513578520"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="15dp"
+                                        android:autoSizeMaxTextSize="18dp"/>
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+<!--                        <View-->
+<!--                            android:id="@+id/divider_phone"-->
+<!--                            android:layout_below="@id/lay_phone"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:layout_marginLeft="17dp"-->
+<!--                            android:layout_marginRight="17dp"-->
+<!--                            android:background="@color/black" />-->
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_phone"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <LinearLayout
+                                    android:id="@+id/code_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="GST No"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/code_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginRight="5dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/ic_gst"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_below="@+id/code_text"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_marginRight="25dp"
+                                    android:layout_toRightOf="@id/code_lay_icon">
+<!--                                    android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center_vertical"
+                                        android:text="ASDE8545"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+<!--                        <View-->
+<!--                            android:id="@+id/divider_code"-->
+<!--                            android:layout_below="@id/lay_code"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:layout_marginRight="15dp"-->
+<!--                            android:background="@color/black"-->
+<!--                            android:layout_marginBottom="20dp"/>-->
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_licno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_code"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/licno_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="License No"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/licno_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="18dp"
+                                    android:layout_marginRight="5dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/licno_ic"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@+id/licno_text"
+                                    android:layout_marginRight="25dp"
+                                    android:layout_toRightOf="@id/licno_lay_icon">
+                                    <!--android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center_vertical"
+                                        android:text="1974156548256"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_regno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_licno"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/regno_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Registration No"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/regno_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="18dp"
+                                    android:layout_marginRight="5dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/regno_icon"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@+id/regno_text"
+                                    android:layout_marginRight="25dp"
+                                    android:layout_toRightOf="@id/regno_lay_icon">
+                                    <!--android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center_vertical"
+                                        android:text="1974AB154568"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_since"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_regno"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/since_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Since"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/since_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="18dp"
+                                    android:layout_marginRight="5dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/since_icon"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@+id/since_text"
+                                    android:layout_marginRight="25dp"
+                                    android:layout_toRightOf="@id/since_lay_icon">
+                                    <!--android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center_vertical"
+                                        android:text="1974"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_ppl"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_since"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/ppl_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="No of Employees"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ppl_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="18dp"
+                                    android:layout_marginRight="5dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/ppl_icon"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@+id/ppl_text"
+                                    android:layout_marginRight="25dp"
+                                    android:layout_toRightOf="@id/ppl_lay_icon">
+                                    <!--android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center_vertical"
+                                        android:text="200"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_adh"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_ppl"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/adh_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Aadhar No"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/adh_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="18dp"
+                                    android:layout_marginRight="0dp">
+                                    <ImageView
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp"
+                                        android:src="@drawable/adh_icon"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@+id/adh_text"
+                                    android:layout_marginRight="25dp"
+                                    android:layout_toRightOf="@id/adh_lay_icon">
+                                    <!--android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center_vertical"
+                                        android:text="4587787852654123"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_pan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_adh"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/pan_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Pan No"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/pan_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="18dp"
+                                    android:layout_marginRight="5dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/pan_icon"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@+id/pan_text"
+                                    android:layout_marginRight="25dp"
+                                    android:layout_toRightOf="@id/pan_lay_icon">
+                                    <!--android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center_vertical"
+                                        android:text="ABHOG5874N4"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_add"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_pan"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/add_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Address"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/add_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="9dp"
+                                    android:layout_marginTop="18dp"
+                                    android:layout_marginRight="0dp">
+                                    <ImageView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:src="@drawable/add_icon"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@+id/add_text"
+                                    android:layout_marginRight="25dp"
+                                    android:layout_toRightOf="@id/add_lay_icon">
+                                    <!--android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="45dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="#4, 6th cross 3rd main, ejipura, Bangalore, Karnataka"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/lay_pin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="17dp"
+                            android:layout_below="@+id/lay_add"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp"
+                            android:layout_marginBottom="20dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/pin_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="55dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Pin Code"
+                                        android:textColor="#a3a3a3"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/pin_lay_icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginTop="18dp"
+                                    android:layout_marginRight="5dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:src="@drawable/pin_icon"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:layout_below="@+id/pin_text"
+                                    android:layout_marginRight="25dp"
+                                    android:layout_toRightOf="@id/pin_lay_icon">
+                                    <!--android:background="@drawable/view_text_bg">-->
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:textColor="#6a6a6a"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center_vertical"
+                                        android:text="560047"
+                                        android:autoSizeTextType="uniform"
+                                        android:autoSizeMinTextSize="13dp"
+                                        android:autoSizeMaxTextSize="20dp"/>
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
         </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="Shop name">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:drawableLeft="@drawable/ic_shop_icon"
-                    android:drawablePadding="10dp"
-                    android:text="Example shop name" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="Email">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:drawableLeft="@drawable/ic_email"
-                    android:drawablePadding="10dp"
-                    android:text="example@gmail.com" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="Phone Number">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:drawableLeft="@drawable/ic_phone"
-                    android:drawablePadding="10dp"
-
-                    android:text="+91-0123456789" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="GST TIN">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:drawableLeft="@drawable/ic_gst"
-                    android:drawablePadding="10dp"
-
-                    android:text="86758657867957" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
-
+    </RelativeLayout>
 </layout>
-
-
-
-
-
-

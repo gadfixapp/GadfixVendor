@@ -1,4 +1,4 @@
-package com.app.gadfixvendor.Activities;
+    package com.app.gadfixvendor.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;

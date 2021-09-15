@@ -58,7 +58,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
                             android:fontFamily="@font/product_sans"
-                            android:text="Enter your vlid OTP"
+                            android:text="Enter your valid OTP"
                             android:textSize="20dp"/>
                     </LinearLayout>
 
